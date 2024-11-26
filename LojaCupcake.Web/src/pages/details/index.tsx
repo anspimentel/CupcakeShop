@@ -15,7 +15,6 @@ export default function CupcakeDetails() {
 
   const [loading, setLoading] = useState<boolean>(false);
   const [cupcake, setCupcake] = useState<CupcakeModel>();
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
   const [quantities, setQuantities] = useState<{ [key: number]: number }>({});
 
   const fetchCupcake = async () => {
@@ -25,7 +24,6 @@ export default function CupcakeDetails() {
       .get<ServiceResult<CupcakeModel>>(`/cupcakes/${cupcakeId}`)
       .then(({ data }) => {
         setCupcake(data.data as CupcakeModel);
-        setImageUrl(data.data?.image_url || null);
       })
       .finally(() => setLoading(false));
   };
@@ -74,9 +72,9 @@ export default function CupcakeDetails() {
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
                 <div className="col-span-6 flex items-center justify-center h-96">
                   <img
-                    src={imageUrl || ""}
-                    alt={cupcake?.name}
+                    src={`http://127.0.0.1:8000/storage/${cupcake?.image}`}
                     className="w-full h-full object-cover object-center rounded-md"
+                    alt={cupcake?.name}
                   />
                 </div>
 

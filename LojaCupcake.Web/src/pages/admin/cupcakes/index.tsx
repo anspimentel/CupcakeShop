@@ -31,8 +31,6 @@ export default function ListCupcakes() {
 
   const [cupcakes, setCupcakes] = useState<CupcakeModel[]>([]);
 
-  const [images, setImages] = useState<{ [key: string]: string }>({});
-
   const fetchCupcakes = async (): Promise<void> => {
     setLoading(true);
 
@@ -41,16 +39,6 @@ export default function ListCupcakes() {
       .then(({ data }) => {
         const cupcakesData = data.data;
         setCupcakes(cupcakesData);
-
-        const imagesTemp: { [key: string]: string } = {};
-
-        cupcakesData.forEach((cupcake) => {
-          if (cupcake.image) {
-            imagesTemp[cupcake.image] = cupcake.image_url;
-          }
-        });
-
-        setImages(imagesTemp);
       })
       .finally(() => setLoading(false));
   };
@@ -154,13 +142,11 @@ export default function ListCupcakes() {
                       {cupcake.quantity}
                     </td>
                     <td className="p-3 text-sm text-gray-700 whitespace-nowrap">
-                      {images[cupcake.image] && (
                         <img
-                          src={images[cupcake.image]}
+                          src={`http://127.0.0.1:8000/storage/${cupcake.image}`}
                           className="max-w-[50px] max-h-[50px] object-cover"
                           alt="foto"
                         />
-                      )}
                     </td>
                     <td className="px-3 py-6 whitespace-nowrap flex items-center text-center">
                       <AiOutlineEdit
@@ -207,13 +193,11 @@ export default function ListCupcakes() {
                   Quantidade:{" "}
                   <span className="text-gray-700">{cupcake.quantity}</span>
                 </div>
-                {images[cupcake.image] && (
                   <img
-                    src={images[cupcake.image]}
+                    src={`http://127.0.0.1:8000/storage/${cupcake.image}`}
                     className="object-cover"
                     alt="foto"
                   />
-                )}
                 <button
                   onClick={() => navigateToEditPage(cupcake)}
                   className="rounded-full px-8 py-2 bg-slate-900 text-white hover:bg-slate-800 transition-all text-center mt-3 lg:mt-0 mb-2 lg:mb-0 w-full lg:w-[200px]"
