@@ -7,6 +7,7 @@ use App\Http\Resources\Cupcake\CupcakeInfoResource;
 use App\Http\Resources\Cupcake\CupcakeResource;
 use App\Models\Cupcake;
 use App\Services\FirebaseStorageService;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class CupcakeController extends Controller
@@ -15,7 +16,7 @@ class CupcakeController extends Controller
 
     public function __construct(FirebaseStorageService $firebaseStorage)
     {
-        $this->firebaseStorage = $firebaseStorage;
+    $this->firebaseStorage = $firebaseStorage;
     }
     public function index()
     {
@@ -30,8 +31,7 @@ class CupcakeController extends Controller
     {
         $validated = $request->validated();
 
-        $imageName = Str::random(32) . "." . $request->image->getClientOriginalExtension();
-        $imageUrl = $this->firebaseStorage->uploadFile($request->image, $imageName);
+        $imageName = Str::random(32).".".$request->image->getClientOriginalExtension();
 
         Cupcake::create([
             'name' => $validated['name'],
@@ -42,9 +42,10 @@ class CupcakeController extends Controller
             'image' => $imageName,
         ]);
 
+        Storage::disk('public')->put($imageName, file_get_contents($request->image));
+
         return response()->json([
             'message' => 'Cupcake successfully registered.',
-            'image_url' => $imageUrl
         ], 201);
     }
 
@@ -65,21 +66,28 @@ class CupcakeController extends Controller
             'quantity' => $validated['quantity'],
         ]);
 
-        if ($request->hasFile('image')) {
-            $this->firebaseStorage->deleteFile($cupcake->image);
-            $imageName = Str::random(32) . "." . $request->image->getClientOriginalExtension();
-            $imageUrl = $this->firebaseStorage->uploadFile($request->image, $imageName);
-            $cupcake->update(['image' => $imageName]);
+        if($request->image) {
+ 
+            $storage = Storage::disk('public');
+  
+            if($storage->exists($cupcake->image))
+                $storage->delete($cupcake->image);
+  
+            $imageName = Str::random(32).".".$request->image->getClientOriginalExtension();
+            $cupcake->image = $imageName;
+  
+            $storage->put($imageName, file_get_contents($request->image));
         }
-
-        $imageUrl = isset($imageUrl) ? $imageUrl : null;
 
         return response()->noContent();
     }
 
     public function destroy(Cupcake $cupcake)
     {
-        $this->firebaseStorage->deleteFile($cupcake->image);
+        $storage = Storage::disk('public');
+      
+        if($storage->exists($cupcake->image))
+            $storage->delete($cupcake->image);
 
         $cupcake->delete();
 

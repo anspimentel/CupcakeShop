@@ -2,7 +2,7 @@ import axios from "axios";
 import AuthModel from "../interfaces/models/auth-model";
 
 const defaultOptions = {
-  baseURL: "https://loja-cupcake-api.vercel.app/api/api",
+  baseURL: "http://127.0.0.1:8000/api",
   headers: {
     "Content-Type": "application/json",
     "Access-Control-Allow-Origin": "*",
