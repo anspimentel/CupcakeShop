@@ -66,4 +66,4 @@ Link do site: https://cupcake-shop-lime.vercel.app <br /> <br />
 
 **Obs: Para acessar o painel administrativo, é necessário entrar na rota /admin, mas apenas o usuário ADMIN poderá acessar. Com isso, o e-mail e a senha do admin são:** <br /> <br />
 Email: admin@admin.com <br />
-Senha: 
+Senha: Confidencial
