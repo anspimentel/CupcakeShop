@@ -1,0 +1,33 @@
+
+      tags:
+        - 'Perfil'
+      summary: 'Retornar os dados do usuário'
+      security:
+        - bearerAuth: []
+      consumes:
+        - 'application/json'
+      produces:
+        - 'application/json'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        description: Nome do usuário
+                      email:
+                        type: string
+                        description: Email do usuário
+                      created_at:
+                        type: string
+                        format: date-time
+                        description: Data de criação do usuário no seguinte formato 2019-02-01T03:45:27
+        401:
+          $ref: "../../responses/401.yaml"

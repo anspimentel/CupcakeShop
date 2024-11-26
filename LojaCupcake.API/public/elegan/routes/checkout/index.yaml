@@ -1,0 +1,59 @@
+
+      tags:
+        - 'Checkout'
+      summary: 'Retornar checkouts realizados'
+      security:
+        - bearerAuth: []
+      consumes:
+        - 'application/json'
+      produces:
+        - 'application/json'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      cupcake:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                            description: ID do cupcake
+                          name:
+                            type: string
+                            description: Nome do cupcake
+                          description:
+                            type: string
+                            description: Descrição do cupcake
+                          ingredients:
+                            type: string
+                            description: Ingredientes do cupcake
+                          amount:
+                            type: number
+                            description: Preço do cupcake
+                          quantity:
+                            type: number
+                            description: Quantidade do cupcake
+                          created_at:
+                            type: string
+                            format: date-time
+                      amount:
+                        type: number
+                        description: Valor do pedido
+                      payment_type:
+                        type: string
+                        description: Forma de pagamento
+                      delivery_type:
+                        type: string
+                        description: Forma de entrega
+                      created_at:
+                        type: string
+                        format: date-time
+        401:
+          $ref: "../../responses/401.yaml"

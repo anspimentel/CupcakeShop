@@ -1,0 +1,70 @@
+    
+    tags:
+      - "Autenticação"
+    summary: "Registrar um novo usuário"
+    consumes:
+      - "application/json"
+    produces:
+      - "application/json"
+    responses:
+      201:
+        $ref: "../../../responses/201.yaml"
+      422:
+        $ref: "../../../responses/422.yaml"
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              name:
+                type: string
+                description: Nome do usuário
+                maximum: 256
+              email:
+                type: string
+                format: email
+                description: Email do usuário
+                maximum: 256
+              zipcode:
+                type: string
+                description: CEP do usuário
+                maximum: 8
+                minimum: 8
+              street:
+                type: string
+                description: Rua do usuário
+                maximum: 256
+              number:
+                type: string
+                description: Número da casa usuário
+              neighborhood:
+                type: string
+                description: Bairro do usuário
+                maximum: 256
+              state:
+                type: string
+                description: Estado do usuário
+                maximum: 32
+              city:
+                type: string
+                description: Cidade do usuário
+                maximum: 64
+              phone:
+                type: string
+                description: Telefone do usuário
+              password:
+                type: string
+                description: Senha do usuário (mínimo de 8 caracteres)
+                minimum: 8
+                maximum: 256
+              password_confirmation:
+                type: string
+                description: Confirmação da senha do usuário (mínimo de 8 caracteres)
+                minimum: 8
+                maximum: 256
+            required:
+              - name
+              - email
+              - password
+              - password_confirmation

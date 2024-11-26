@@ -1,0 +1,25 @@
+
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: integer
+          required: true
+          description: ID do produto
+      tags:
+        - Carrinho de compras
+      summary: Decrementar quantidade do item do carrinho de compras
+      description: Decrementar quantidade do item ou remove-lo caso a quantidade seja zero
+      security:
+        - bearerAuth: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        200:
+          $ref: ../../../../../responses/200.yaml
+        401:
+          $ref: ../../../../../responses/401.yaml
+        404:
+          $ref: ../../../../../responses/404.yaml

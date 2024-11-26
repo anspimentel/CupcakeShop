@@ -1,0 +1,52 @@
+
+      tags:
+        - Cupcakes
+      summary: Exibir detalhes de um cupcake
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          description: ID do cupcake
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    description: Nome do cupcake
+                  description:
+                    type: string
+                    description: Descrição do cupcake
+                  ingredients:
+                    type: string
+                    description: Ingredientes do cupcake
+                  amount:
+                    type: number
+                    description: Preço do cupcake
+                  quantity:
+                    type: integer
+                    description: Quantidade do cupcake
+                  image:
+                    type: string
+                    description: Imagem do cupcake
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Data de criação no seguinte formato 2019-02-01T03:45:27
+        401:
+          $ref: ../../../responses/401.yaml
+        404:
+          $ref: ../../../responses/404.yaml
