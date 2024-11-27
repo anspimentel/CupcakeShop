@@ -61,4 +61,11 @@ class RegisterRequest extends FormRequest
             ],
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'password.confirmed' => 'As senhas não coincidem',
+        ];
+    }
 }

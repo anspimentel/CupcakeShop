@@ -6,12 +6,8 @@ use App\Http\Requests\User\Auth\{
     LoginRequest,
     RegisterRequest,
 };
-use App\Http\Resources\User\Auth\UserResource;
 use App\Models\User;
-use Illuminate\Support\Facades\{
-    Auth,
-    Hash,
-};
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -47,7 +43,7 @@ class AuthController extends Controller
 
         if (!$isValidLogin) {
             return response()->json([
-                'message' => 'Invalid credentials.'
+                'message' => 'Credenciais inválidas.'
             ], 401);
         }
 
