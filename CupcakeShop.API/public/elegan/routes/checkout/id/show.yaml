@@ -1,0 +1,55 @@
+
+      tags:
+        - Checkout
+      summary: Exibir detalhes de um pedido
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: id
+          description: ID do pedido
+          required: true
+          schema:
+            type: integer
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                    example: 1
+                  name:
+                    type: string
+                    description: Nome do produto
+                  amount:
+                    type: number
+                    description: Preço do produto
+                  quantity:
+                    type: string
+                    description: Quantidade do produto
+                  total_amount:
+                    type: number
+                    description: Total do pedido
+                  payment_type:
+                    type: string
+                    description: Tipo de pagamento
+                  delivery_type:
+                    type: string
+                    description: Tipo de entrega
+                  status:
+                    type: string
+                    description: Status do pedido
+                  created_at:
+                    type: string
+                    format: date-time
+                    description: Data de criação no seguinte formato 2019-02-01T03:45:27
+        401:
+          $ref: ../../../responses/401.yaml
+        404:
+          $ref: ../../../responses/404.yaml

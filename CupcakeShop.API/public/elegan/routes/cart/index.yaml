@@ -1,0 +1,29 @@
+
+      tags:
+        - 'Carrinho de compras'
+      summary: 'Retornar itens do carrinho'
+      security:
+        - bearerAuth: []
+      consumes:
+        - 'application/json'
+      produces:
+        - 'application/json'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      cupcake_id:
+                        type: integer
+                        description: ID do produto
+                      quantity:
+                        type: integer
+                        description: Quantidade
+        401:
+          $ref: "../../responses/401.yaml"

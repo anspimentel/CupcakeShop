@@ -1,0 +1,27 @@
+
+      tags:
+        - 'Admin - Dashboard'
+      summary: 'Retornar contagem dos dados'
+      security:
+        - bearerAuth: []
+      consumes:
+        - 'application/json'
+      produces:
+        - 'application/json'
+      responses:
+        200:
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      cupcakesCount:
+                        type: integer
+                        description: 'Contagem total de cupcakes registrados'
+                      
+        401:
+          $ref: "../../responses/401.yaml"

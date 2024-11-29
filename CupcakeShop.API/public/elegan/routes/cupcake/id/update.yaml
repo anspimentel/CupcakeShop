@@ -1,0 +1,61 @@
+
+      tags:
+        - Cupcakes
+      summary: Atualizar um cupcake
+      security:
+        - bearerAuth: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: 'path'
+          name: 'id'
+          description: ID do cupcake
+          required: true
+          schema:
+            type: integer
+      responses:
+        204:
+          $ref: ../../../responses/204.yaml
+        401:
+          $ref : ../../../responses/401.yaml
+        404:
+          $ref: ../../../responses/404.yaml
+        422:
+          $ref: ../../../responses/422.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: Novo nome do cupcake
+                  maximum: 256
+                description:
+                  type: string
+                  description: Nova descrição do cupcake
+                  maximum: 65535
+                ingredients:
+                  type: string
+                  description: Nova lista de ingredientes do cupcake
+                  maximum: 65535
+                amount:
+                  type: number
+                  format: float
+                  description: Novo preço do cupcake
+                  minimum: 0.1
+                  maximum: 21474836
+                quantity:
+                  type: integer
+                  description: Nova quantidade do cupcake
+                  minimum: 0
+                  maximum: 2147483647
+              required:
+                - name
+                - description
+                - ingredients
+                - amount
+                - quantity

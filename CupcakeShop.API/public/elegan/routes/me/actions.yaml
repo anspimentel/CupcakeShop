@@ -1,0 +1,6 @@
+
+    get:
+      $ref: ./index.yaml
+
+    put:
+      $ref: ./update.yaml

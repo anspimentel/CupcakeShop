@@ -1,0 +1,39 @@
+
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: integer
+          description: ID do produto
+      tags:
+        - Carrinho de compras
+      summary: Adicionar item ao carrinho de compras
+      security:
+        - bearerAuth: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      responses:
+        201:
+          $ref: ../../../../responses/201.yaml
+        401:
+          $ref: ../../../../responses/401.yaml
+        404:
+          $ref: ../../../../responses/404.yaml
+        422:
+          $ref: ../../../../responses/422.yaml
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                quantity:
+                  type: integer
+                  description: Quantidade do item a ser adicionado no carrinho
+                  minimum: 1
+                  maximum: 2147483647
+            required:
+              - quantity

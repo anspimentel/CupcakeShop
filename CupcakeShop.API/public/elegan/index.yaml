@@ -1,0 +1,58 @@
+openapi: 3.0.0
+info:
+  description: Documentação da api
+  title: Mateus Desafio Laravel - Docs
+  version: 0.0.4
+
+servers:
+  - url: /api
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Sanctum
+
+paths:
+  /auth/register:
+    $ref: "./routes/auth/register/actions.yaml"
+  /auth/login:
+    $ref: "./routes/auth/login/actions.yaml"
+
+  /me:
+    $ref: "./routes/me/actions.yaml"
+
+  /cupcakes:
+    $ref: "./routes/cupcake/actions.yaml"
+  /cupcakes/{id}:
+    $ref: "./routes/cupcake/id/actions.yaml"
+
+  /cart:
+    $ref: "./routes/cart/actions.yaml"
+
+  /cupcakes/{id}/cart:
+    $ref: "./routes/cupcake/id/cart/actions.yaml"
+  /cupcakes/{id}/cart/increase:
+    $ref: "./routes/cupcake/id/cart/increase/actions.yaml"
+  /cupcakes/{id}/cart/decrease:
+    $ref: "./routes/cupcake/id/cart/decrease/actions.yaml"
+
+  /checkout:
+    $ref: "./routes/checkout/actions.yaml"
+  /checkout/{id}:
+    $ref: "./routes/checkout/id/actions.yaml"
+
+  /checkout/{id}/cancel:
+    $ref: "./routes/checkout/id/cancel/actions.yaml"
+
+  /dashboard:
+    $ref: "./routes/dashboard/actions.yaml"
+
+  /users:
+    $ref: "./routes/users/actions.yaml"
+  /users/{id}:
+    $ref: "./routes/users/id/actions.yaml"
+
+  /requests:
+    $ref: "./routes/requests/actions.yaml"
