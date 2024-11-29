@@ -87,7 +87,7 @@ export default function Cart() {
                   <div className="lg:col-span-6 flex lg:flex-row flex-col items-center lg:items-start mt-6 lg:mt-0">
                     <img
                       className="w-56 lg:w-24 object-contain rounded-lg"
-                      src={cupcake.image_url}
+                      src={`http://127.0.0.1:8000/storage/${cupcake.image}`}
                       alt={cupcake.name}
                     />
                     <div className="flex flex-col items-center lg:items-start justify-center lg:justify-start mt-2 lg:mt-0 lg:ml-5">

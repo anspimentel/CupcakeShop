@@ -143,23 +143,23 @@ export default function RequestDetails() {
                       </div>
                     </div>
                     <div className="flex flex-col space-y-5 mt-2">
-                      <p className="mt-3">
-                        Tipo de pagamento:{" "}
-                        <span className="font-semibold">
-                          {getPaymentTypeLabel(
-                            request?.payment_type as PaymentType
-                          )}
-                        </span>
-                      </p>
-                      <p className="mt-3">
-                        Tipo de entrega:{" "}
-                        <span className="font-semibold">
-                          {getDeliveryTypeLabel(
-                            request?.delivery_type as DeliveryType
-                          )}
-                        </span>
-                      </p>
-                    </div>
+                    <p className="mt-3">
+                      Tipo de pagamento:{" "}
+                      <span className="font-semibold">
+                        {getPaymentTypeLabel(
+                          request?.payment_type as PaymentType
+                        )}
+                      </span>
+                    </p>
+                    <p className="mt-3">
+                      Tipo de entrega:{" "}
+                      <span className="font-semibold">
+                        {getDeliveryTypeLabel(
+                          request?.delivery_type as DeliveryType
+                        )}
+                      </span>
+                    </p>
+                  </div>
                   </div>
                 </div>
 
