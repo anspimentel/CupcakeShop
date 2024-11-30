@@ -17,7 +17,7 @@ Já a branch _develop_ é onde se encontra aplicação pronta para ser rodada lo
 
 **1. Clone o repositório (link abaixo)**:
 ```
-git clone https://github.com/mateus040/LojaCupcake.git
+git clone https://github.com/anspimentel/LojaCupcake.git
 ```
 
 **2. Entre na pasta clonada e execute o seguinte comando:**
