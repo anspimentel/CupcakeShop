@@ -22,12 +22,12 @@ class CupcakeController extends Controller
     {
         $cupcakes = Cupcake::get();
 
-        $orderCupcakes = $cupcakes->sortBy(function ($cupcake) {
+        $sortedCupcakes = $cupcakes->sortBy(function ($cupcake) {
             return $cupcake->status === CupcakeStatusType::OUT_OF_STOCK->value ? 1 : 0;
         });
 
         return response()->json([
-            'data' => $orderCupcakes
+            'data' => $sortedCupcakes->values()
         ], 200);
     }
 
